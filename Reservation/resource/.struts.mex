@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="resDefault" location="0,0" size="0,0" />
+  <package name="index" location="0,0" size="0,0">
+    <action name="sct_*" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="list" />
+    </action>
+    <action name="viewLogin" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="login" />
+    </action>
+    <action name="login" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="login" />
+    </action>
+    <action name="logOff" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="user_*" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="info" />
+      <result name="login" />
+      <result name="update" />
+    </action>
+    <action name="register" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="error" />
+    </action>
+    <action name="pro_*" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="detail" />
+      <result name="list" />
+    </action>
+    <action name="addUserProduct" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+  </package>
+  <package name="manage" location="0,0" size="0,0">
+    <action name="*_*" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="add" />
+      <result name="update" />
+      <result name="list" />
+      <result name="detail" />
+      <result name="search" />
+    </action>
+  </package>
+</Struts2Diagram>
+

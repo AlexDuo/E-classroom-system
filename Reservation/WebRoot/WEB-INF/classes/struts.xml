@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" 
+"struts-2.1.dtd">
+<struts>
+	
+	<constant name="struts.devMode" value="true" />
+
+	<package name="index" namespace="/" extends="struts-default">
+		<!-- 控制购物车 -->
+		<action name="sct_*" class="Reservation.action.ShopCartAction" method="{1}">
+			<result type="redirect">sct_list.action</result>
+			<result name="list">/shopcart.jsp</result>
+		</action> 
+		<!-- 自动登录控制跳转 -->
+		<action name="viewLogin" class="Reservation.action.UserAction" method="viewLogin" >
+			<result type="redirect">pro_list.action</result>
+			<result name="login">/login.jsp</result>
+		</action>
+		<!-- 登录控制 -->
+		<action name="login" class="Reservation.action.UserAction" method="login">
+			<result type="redirect">user_info.action</result>
+			<result name="login">/login.jsp</result>
+		</action>
+		<!-- 退出登录控制 -->
+		<action name="logOff" class="Reservation.action.UserAction" method="logOff">
+			<result type="redirect">/index.jsp</result>
+		</action>
+		<!-- 用户的修改个人信息，查看个人中心  -->
+		<action name="user_*" class="Reservation.action.UserAction" method="{1}">
+			<result type="redirect">user_info.action?id=${user.id}</result>
+			<result name="info">/userInfo.jsp</result>
+			<result name="login">/login.jsp</result>
+			<result name="update">/userUpdate.jsp</result>
+		</action>
+		<!-- 用户注册.. -->
+		<action name="register" class="Reservation.action.UserAction" method="add">
+			<result>/login.jsp</result>
+			<result name="error">/register.jsp</result>
+		</action>
+		<!-- 商品列表， 商品详情 -->
+		<action name="pro_*" class="Reservation.action.ProductAction" method="{1}">
+			<result type="redirect">pro_list.action</result>
+			<result name="detail">/proDetail.jsp</result>
+			<result name="list">/proList.jsp</result>
+		</action>
+		<!-- 用户添加订单 -->
+		<action name="addUserProduct" class="Reservation.action.UserProductAction" method="add">
+			<result type="redirect">pro_list.action</result>
+		</action>
+		<action name="signIn" class="Reservation.action.UserProductAction" method="signIn">
+			<result type="redirect">user_info.action</result>
+		</action>  
+		
+	</package>
+	
+	<package name="manage" namespace="/manage" extends="struts-default">
+		
+		<action name="*_*" class="Reservation.action.{1}Action" method="{2}">
+			<result type="redirect">{1}_list.action</result>
+			<result name="add">/manage/{1}/{1}_add.jsp</result>
+			<result name="update">/manage/{1}/{1}_update.jsp</result>
+			<result name="list">/manage/{1}/{1}_list.jsp</result>
+			<result name="detail">/manage/{1}/{1}_detail.jsp</result>
+			<result name="search">/manage/{1}/{1}_search.jsp</result>
+		</action>
+		
+	</package>
+	
+</struts>    

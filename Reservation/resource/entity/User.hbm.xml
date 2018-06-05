@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="Reservation.entity.User" table="res_user" dynamic-update="true">
+    
+    	<!-- <cache usage="read-write"/>  -->
+    	<!--与数据库里面的表字段相互对应-->
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="native" />
+        </id>
+        
+        <property name="userName" type="java.lang.String">
+            <column name="userName" not-null="true" />
+        </property>
+        
+        <property name="password" type="java.lang.String">
+            <column name="password" not-null="true" />
+        </property>
+        
+        <property name="phone" type="java.lang.String">
+            <column name="phone" />
+        </property>
+        
+        <property name="email" type="java.lang.String">
+            <column name="email" />
+        </property>
+        
+        <property name="addr" type="java.lang.String">
+            <column name="addr" />
+        </property>
+        
+        <property name="regTime" type="java.sql.Timestamp">
+            <column name="regTime" />
+        </property>
+        
+        <property name="status" type="java.lang.Short">
+            <column name="status" />
+        </property>
+        <!-- 多表关联， 与userProduct关联， 为一个userProduct实例的集合 -->
+        <set name="userProduct">
+        	<key>
+        		<column name="userId"></column>
+        	</key>
+        	<one-to-many class="Reservation.entity.UserProduct"/>
+        </set>
+        
+    </class>
+</hibernate-mapping>

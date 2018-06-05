@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="Reservation.entity.Product" table="res_pro" dynamic-update="true">
+    
+    	<!-- <cache usage="read-write"/>  -->
+    	<!-- 与数据库res_pro 表对应 -->
+        <id name="id" type="java.lang.Integer">
+            <column name="id"></column>
+            <generator class="native" />
+        </id>
+        
+        <property name="proName" type="java.lang.String">
+            <column name="proName" not-null="true"></column>
+        </property>
+        
+        <property name="proPrice" type="java.lang.Double">
+            <column name="proPrice" not-null="true" />
+        </property>
+        
+        <property name="proIntro" type="java.lang.String">
+            <column name="proIntro"/>
+        </property>
+        
+        <property name="proStartTime" type="java.lang.String">
+            <column name="proStartTime"/>
+        </property>
+        
+        <property name="proEndTime" type="java.lang.String">
+            <column name="proEndTime"/>
+        </property>
+        
+        <set name="userProduct">
+        	<key>
+        		<column name="proId"></column>
+        	</key>
+        	<one-to-many class="Reservation.entity.UserProduct"/>
+        </set>
+        
+    </class>
+</hibernate-mapping>
